@@ -46,5 +46,3 @@ for key_rider in rider.keys():
     i+=1
 plt.show()
 plt.close()
-
-    

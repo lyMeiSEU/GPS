@@ -22,7 +22,7 @@ for file in fr:
         Lo[str(rowvalue[0])].append(LoN)
         La[str(rowvalue[0])].append(LaN)
         detected_time=rowvalue[4]
-        val=[LoN,detected_time,LaN]
+        val=[LoN,LaN]
         rider[str(rowvalue[0])].append(val)
 
 
@@ -32,7 +32,8 @@ for file in fr:
         print(rider[key_rider])
         csvF=open('./'+file+'/'+'loc&gps'+str(key_rider)+'.csv','w+',newline="")
         csvwriter=csv.writer(csvF)
-        csvwriter.writerow(rider[key_rider])
+        for obj in rider[key_rider]:
+            csvwriter.writerow([obj[0][0],obj[1][0],obj[0][1],obj[1][1]])
         csvF.close()
         for i in range(0,len(Lo[key_rider])-1):
             plt.plot(Lo[key_rider][i],La[key_rider][i])
